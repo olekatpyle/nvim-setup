@@ -1,0 +1,3 @@
+## NVIM CONFIGURATION
+
+### Personal setup
