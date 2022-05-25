@@ -71,6 +71,9 @@ return require('packer').startup(function()
     use 'olekatpyle/lspsaga.nvim'
     use 'jose-elias-alvarez/null-ls.nvim'
 
+    use 'mfussenegger/nvim-dap'
+    use {'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'}}
+
     use 'mfussenegger/nvim-jdtls'
 
     use 'Yggdroot/indentLine'
