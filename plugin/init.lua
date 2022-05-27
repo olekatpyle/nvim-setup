@@ -41,10 +41,19 @@ return require('packer').startup(function()
     }
 
     use 'ryanoasis/vim-devicons'
-    use 'vim-airline/vim-airline'
-    use 'vim-airline/vim-airline-themes'
+
+    use {
+        'olekatpyle/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt=true}
+    }
+    use {
+        'kdheepak/tabline.nvim',
+        requires = { { 'olekatpyle/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true}
+    } }
+
     use 'edkolev/tmuxline.vim'
 
+    use 'norcalli/nvim-colorizer.lua'
 
     -- Utility
     use 'mbbill/undotree'
