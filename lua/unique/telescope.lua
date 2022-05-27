@@ -56,6 +56,14 @@ M.search_qtile = function()
 	})
 end
 
+M.search_devops = function()
+	require("telescope.builtin").find_files({
+		prompt_title = "< DevOps >",
+		cwd = vim.env.DEVOPS_DIR,
+		hidden = true,
+	})
+end
+
 M.git_branches = function()
 	require("telescope.builtin").git_branches({
 		attach_mappings = function(_, map)

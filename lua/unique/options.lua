@@ -2,7 +2,7 @@ local options = {
   backup = false,			                        -- create a backup file
   writebackup = false,			                    -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
   clipboard = "unnamedplus",		                -- allows nvim to access the system clipboard
-  cmdheight = 2,			                        -- more space in the nvim command line for displaying messages
+  cmdheight = 1,			                        -- more space in the nvim command line for displaying messages
   completeopt = {"menuone", "noselect" },           -- mostly just for cmp
   conceallevel = 0,			                        -- make `` visible in markdown files
   fileencoding = "utf-8",		                    -- the encoding written to a file
@@ -11,7 +11,7 @@ local options = {
   ignorecase = true,			                    -- ignore case in search pattern
   mouse = "a",				                        -- allow the mouse to be used in nvim
   pumheight = 10,			                        -- pop up menu height
-  showmode = true,			                        -- display current mode
+  showmode = false,			                        -- display current mode
   showtabline = 2,			                        -- always show tabs
   smartcase = true,			                        -- smart case
   smartindent = true,			                    -- make indenting smart again
@@ -48,9 +48,10 @@ vim.cmd([[
   set wildignore+=**/node_modules/*
   set whichwrap+=<,>,[,],h,l
 
+  set laststatus=3
   set termguicolors
   set background=dark
-
+  
   let g:gruvbox_transparent_bg = 0 
   let g:gruvbox_contrast_dark = 1 
   let g:gruvbox_improved_strings = 0
@@ -59,6 +60,7 @@ vim.cmd([[
   colorscheme gruvbox
 
   hi Normal guibg=NONE ctermbg=NONE                 " transparent background
+  hi WinSeparator guibg='None' guifg='#c2a5f3'
   hi LspFloatWinNormal guibg='#282828' 
   hi LspFloatWinBorder guibg='#282828' 
   hi LspFloatWinBorder guibg='#282828'
@@ -80,6 +82,9 @@ vim.cmd([[
   hi NVimTreeFolderName guifg='#ffffff'
   hi NVimTreeOpenedFolderName guifg='#ebdbb2'
   hi NvimTreeOpenedFile guifg='#3de5a7' 
-  " hi NvimTreeIndentMarker guifg='#3de5a7'
+  hi TelescopeNormal guibg='#282828' guifg='#ffffff'
+  hi TelescopeBorder guibg='#282828' guifg='#c2a5f3'
+  hi NvimTreeIndentMarker guifg='#c2a5f3'
+  hi NvimTreeWinSeparator guibg='#282828' guifg='#c2a5f3'
 
 ]])

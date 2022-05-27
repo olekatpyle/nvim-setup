@@ -59,6 +59,7 @@ wk.register({
 		v = { ':lua require("unique.telescope").search_nvim()<CR>', "Search NVIM dir" },
 		g = { ':lua require("telescope.builtin").git_files()<CR>', "Git files" },
 		q = { ':lua require("unique.telescope").search_qtile()<CR>', "Search Qtile dir" },
+		d = { ':lua require("unique.telescope").search_devops()<CR>', "Search DevOps dir" },
 	},
 }, { mode = "n", prefix = "<Leader>", buffer = nil, silent = true, nowait = false })
 
