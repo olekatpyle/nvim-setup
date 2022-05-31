@@ -12,7 +12,7 @@ require('tabline').setup {
         show_bufnr = false, -- this appends [bufnr] to buffer section,
         show_filename_only = true, -- shows base filename only instead of relative path in filename
         modified_icon = " ", -- change the default modified icon
-        modified_italic = false, -- set to true by default; this determines whether the filename turns italic if modified
+        modified_italic = true, -- set to true by default; this determines whether the filename turns italic if modified
         show_tabs_only = false, -- this shows only tabs instead of tabs + buffers
       }
 }
@@ -20,6 +20,9 @@ require('tabline').setup {
 vim.cmd[[
     set guioptions-=e " Use showtabline in gui vim
     set sessionoptions+=tabpages,globals " store tabpages and globals in session
+    hi tabline_a_normal guibg='#875faf' guifg='#ffffff'
+    hi tabline_b_normal guibg='#d75fff' guifg='#282828'
+    hi tabline_c_normal guibg='#d75fff' guifg='#282828'
 ]]
 
 

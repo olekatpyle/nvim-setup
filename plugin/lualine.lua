@@ -67,3 +67,12 @@ require('lualine').setup {
     },
   extensions = {'nvim-tree', 'toggleterm', 'fzf', 'fugitive'}
 }
+
+vim.cmd([[ 
+    hi lualine_a_normal gui=italic
+    hi lualine_a_insert gui=italic
+    hi lualine_a_visual gui=italic
+    hi lualine_a_command gui=italic
+    hi lualine_a_replace gui=italic
+    hi lualine_a_inactive gui=italic
+]])

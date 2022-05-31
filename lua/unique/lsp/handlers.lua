@@ -10,19 +10,49 @@ M.setup = function()
     })
 end
 
+-- This function can be used with NVIM 0.8
+local lsp_formatting = function(bufnr)
+    vim.lsp.buf.format({
+        filter = function(client)
+            return client.name == 'null-ls'
+        end,
+        bufnr = bufnr
+    })
+end
+
 local function lsp_highlight_document(client)
-    -- if client.server_capabilities.document_highlight then
-    local status_ok, illuminate = pcall(require, "illuminate")
-    if not status_ok then
-        return
+    if client.server_capabilities.document_highlight then
+        local status_ok, illuminate = pcall(require, "illuminate")
+        if not status_ok then
+            return
+        end
+        illuminate.on_attach(client)
     end
-    illuminate.on_attach(client)
-    -- end
+end
+
+local function lsp_signature_help(bufnr)
+    require "lsp_signature".on_attach({
+        bind = true,
+        handler_opts = {
+            border = "single",
+        }
+    }, bufnr)
 end
 
 M.on_attach = function(client, bufnr, attach_opts)
     require('unique.mappings').lsp_keymaps(bufnr)
     lsp_highlight_document(client)
+    lsp_signature_help(bufnr)
+    -- if client.supports_method('textDocument/formatting') then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd('BufWritePre', {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+            lsp_formatting(bufnr)
+        end
+    })
+    -- end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -34,36 +64,5 @@ if not status_ok then
 end
 
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-
-function M.enable_format_on_save()
-    vim.cmd [[
-    augroup format_on_save
-      autocmd! 
-      autocmd BufWritePre * lua vim.lsp.buf.formatting()
-    augroup end
-  ]]
-    vim.notify "Enabled format on save"
-end
-
-function M.disable_format_on_save()
-    M.remove_augroup "format_on_save"
-    vim.notify "Disabled format on save"
-end
-
-function M.toggle_format_on_save()
-    if vim.fn.exists "#format_on_save#BufWritePre" == 0 then
-        M.enable_format_on_save()
-    else
-        M.disable_format_on_save()
-    end
-end
-
-function M.remove_augroup(name)
-    if vim.fn.exists("#" .. name) == 1 then
-        vim.cmd("au! " .. name)
-    end
-end
-
-vim.cmd [[ command! LspToggleAutoFormat execute 'lua require("unique.lsp.handlers").toggle_format_on_save()' ]]
 
 return M
