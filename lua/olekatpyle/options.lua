@@ -21,7 +21,8 @@ local options = {
 	termguicolors = true, -- set term gui colors (most terminals support this)
 	timeoutlen = 200, -- time to  wait for a mapped sequence to complete (in milliseconds)
 	undofile = true, -- enable persistent undo
-	updatetime = 250, -- faster completion (4000ms default)
+	undodir = "$HOME/.config/nvim/undodir/",
+	updatetime = 200, -- faster completion (4000ms default)
 	expandtab = true, -- convert tabs to spaces
 	shiftwidth = 4, -- the number of spaces inserted for each indentation
 	tabstop = 4, -- insert 2 spaces for a tab
@@ -29,7 +30,7 @@ local options = {
 	number = true, -- set numbered lines
 	relativenumber = true, -- set relative numbered lines
 	numberwidth = 2, -- set number column width to 2 (default 4)
-	signcolumn = "yes:2", -- always show the sign column, otherwise it would shift the text each time
+	signcolumn = "yes:3", -- always show the sign column, widht=3
 	colorcolumn = "80",
 	wrap = false, -- toggle word wrap
 	scrolloff = 8,
@@ -47,54 +48,4 @@ vim.cmd([[
   set wildignore+=*.git
   set wildignore+=**/node_modules/*
   set whichwrap+=<,>,[,],h,l
-
-  " activate netrw for remote file editing
-  set nocp
-  if version >= 600
-    filetype plugin indent on
-  endif
-
-  set laststatus=3
-  set termguicolors
-  set background=dark
-  
-  let g:gruvbox_transparent_bg = 1 
-  let g:gruvbox_contrast_dark = 'hard' 
-  let g:gruvbox_italicize_comments = 1
-  let g:gruvbox_italic = 1 
-  let g:gruvbox_italicize_strings = 1
-  let g:gruvbox_improved_strings = 0
-  let g:gruvbox_improved_warinings = 0
-
-  colorscheme gruvbox
-
-  hi Normal guibg=NONE ctermbg=NONE                 " transparent background
-  hi Comment guifg='#93939c'
-  hi WinSeparator guibg='None' guifg='#c2a5f3'
-  hi LspFloatWinNormal guibg='#282828' 
-  hi LspFloatWinBorder guibg='#282828' 
-  hi LspFloatWinBorder guibg='#282828'
-  hi LspFloatWinBorder guifg='#c2a5f3'
-  hi LspSagaHoverBorder guibg='#282828'
-  hi LspSagaHoverBorder guifg='#c2a5f3'
-  hi LspSagaDefPreviewBorder guibg='#282828'
-  hi LspSagaDefPreviewBorder guifg='#c2a5f3'
-  hi LspRenameBorder guibg='#282828'
-  hi LspRenameBorder guifg='#c2a5f3'
-  hi Menu guibg='#282828'  
-  hi PMenu guibg='#282828'  
-  hi PmenuSbar guibg='#c2a5f3'
-  hi DiagnosticSignError guibg='#3c3836' guifg=Red
-  hi DiagnosticSignWarn guibg='#3c3836' guifg=Orange 
-  hi DiagnosticSignInfo guibg='#3c3836' guifg=LightBlue 
-  hi DiagnosticSignHint guibg='#3c3836' guifg=LightGrey 
-  hi NvimTreeNormal guibg='#282828' guifg=White
-  hi NVimTreeFolderName guifg='#ffffff'
-  hi NVimTreeOpenedFolderName guifg='#ebdbb2'
-  hi NvimTreeOpenedFile guifg='#3de5a7' 
-  hi TelescopeNormal guibg='#282828' guifg='#ffffff'
-  hi TelescopeBorder guibg='#282828' guifg='#c2a5f3'
-  hi NvimTreeIndentMarker guifg='#c2a5f3'
-  hi NvimTreeWinSeparator guibg='#282828' guifg='#c2a5f3'
-
 ]])

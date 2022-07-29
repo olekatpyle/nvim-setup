@@ -64,6 +64,14 @@ M.search_devops = function()
 	})
 end
 
+M.search_config = function()
+	require("telescope.builtin").find_files({
+		prompt_title = "< Config >",
+		cwd = vim.env.CONF_DIR,
+		hidden = true,
+	})
+end
+
 M.git_branches = function()
 	require("telescope.builtin").git_branches({
 		attach_mappings = function(_, map)

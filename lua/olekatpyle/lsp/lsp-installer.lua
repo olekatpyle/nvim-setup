@@ -6,10 +6,11 @@ end
 local servers = {
 	"sumneko_lua",
 	"pyright",
-	-- "jedi_language_server",
-	-- "sourcery"
-	--"pylsp"
 	"clangd",
+	--"omnisharp",
+	"csharp_ls",
+	-- "rome",
+	"tsserver",
 }
 
 local settings = {
@@ -51,17 +52,17 @@ local opts = {}
 
 for _, server in pairs(servers) do
 	opts = {
-		on_attach = require("unique.lsp.handlers").on_attach,
-		capabilities = require("unique.lsp.handlers").capabilities,
+		on_attach = require("olekatpyle.lsp.handlers").on_attach,
+		capabilities = require("olekatpyle.lsp.handlers").capabilities,
 	}
 
 	if server == "sumneko_lua" then
-		local sumneko_opts = require("unique.lsp.settings.sumneko_lua")
+		local sumneko_opts = require("olekatpyle.lsp.settings.sumneko_lua")
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 	end
 
 	if server == "pyright" then
-		local pyright_opts = require("unique.lsp.settings.pyright")
+		local pyright_opts = require("olekatpyle.lsp.settings.pyright")
 		opts = vim.tbl_deep_extend("force", pyright_opts, opts)
 	end
 
