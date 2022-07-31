@@ -11,7 +11,7 @@ return {
 				},
 			},
 			format = {
-				enable = true,
+				enable = false,
 			},
 			telemetry = {
 				enable = false,

@@ -12,6 +12,9 @@ vim.g.mapleader = " "
 
 -- save and quit
 map("n", "<Leader>w", ":w<CR>", { silent = true, noremap = true })
+map("n", "<Leader>q", ":q<CR>", { silent = true, noremap = true })
+map("n", "<Leader>Q", ":q!<CR>", { silent = true, noremap = true })
+map("n", "<Leader>bd", ":bd<CR>", { silent = true, noremap = true })
 
 -- basic window movement
 map("n", "<C-h>", "<C-w>h", { silent = true })
@@ -169,8 +172,6 @@ function M.lsp_keymaps(bufnr)
 		},
 	})
 	map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true, noremap = true })
-
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
 end
 
 return M

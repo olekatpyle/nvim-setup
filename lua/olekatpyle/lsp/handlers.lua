@@ -10,16 +10,6 @@ M.setup = function()
 	})
 end
 
--- This function can be used with NVIM 0.8
-local lsp_formatting = function(bufnr)
-	vim.lsp.buf.format({
-		bufnr = bufnr,
-		filter = function(client)
-			return client.name == "null-ls"
-		end,
-	})
-end
-
 local function lsp_highlight_document(client)
 	if client.server_capabilities.document_highlight then
 		local status_ok, illuminate = pcall(require, "illuminate")
@@ -43,16 +33,6 @@ M.on_attach = function(client, bufnr, attach_opts)
 	require("olekatpyle.mappings").lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 	lsp_signature_help(bufnr)
-	if client.supports_method("textDocument/formatting") and client.name ~= "csharp_ls" then
-		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = augroup,
-			buffer = bufnr,
-			callback = function()
-				lsp_formatting(bufnr)
-			end,
-		})
-	end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -26,20 +26,16 @@ vim.cmd([[
 
   colorscheme gruvbox
 
-  hi Normal guibg=NONE ctermbg=NONE                 " transparent background
+  " hi Normal guibg=NONE ctermbg=NONE                 " transparent background
   hi Comment guifg='#93939c'
   hi LineNr guifg=#7c6f64 guibg=#3c3836
   hi WinSeparator guibg='None' guifg='#282828'
   hi LspFloatWinNormal guibg='#282828' 
-  hi LspFloatWinBorder guibg='#282828' 
-  hi LspFloatWinBorder guibg='#282828'
-  hi LspFloatWinBorder guifg='#c2a5f3'
-  hi LspSagaHoverBorder guibg='#282828'
-  hi LspSagaHoverBorder guifg='#c2a5f3'
+  hi LspFloatWinBorder guibg='#282828' guifg='#3c3836'
+  hi LspSagaHoverBorder guibg='#282828' guifg='#3c3836'
   hi LspSagaDefPreviewBorder guibg='#282828'
   hi LspSagaDefPreviewBorder guifg='#c2a5f3'
-  hi LspRenameBorder guibg='#282828'
-  hi LspRenameBorder guifg='#c2a5f3'
+  hi LspRenameBorder guibg='#282828' guifg='#3c3836'
   hi Menu guibg='#282828'  
   hi PMenu guibg='#282828'  
   hi PmenuSbar guibg='#c2a5f3'
@@ -47,14 +43,19 @@ vim.cmd([[
   hi DiagnosticSignWarn guibg='#3c3836' guifg=Orange 
   hi DiagnosticSignInfo guibg='#3c3836' guifg=LightBlue 
   hi DiagnosticSignHint guibg='#3c3836' guifg=LightGrey 
-  hi NvimTreeNormal guibg='#282828' guifg=White
-  hi NVimTreeFolderName guifg='#ffffff'
-  hi NVimTreeOpenedFolderName guifg='#ebdbb2'
-  hi NvimTreeOpenedFile guifg='#3de5a7' 
+  hi DiagnosticUnderlineError cterm=undercurl gui=undercurl
+  hi DiagnosticUnderlineWarn cterm=undercurl gui=undercurl
+  hi DiagnosticUnderlineInfo cterm=undercurl gui=undercurl
+  hi DiagnosticUnderlineHint cterm=undercurl gui=undercurl
+  " hi NvimTreeNormal guibg='#282828' guifg=White
+  " hi NVimTreeFolderName guifg='#ffffff'
+  " hi NVimTreeOpenedFolderName guifg='#98971a' gui='bold'
+  " hi NvimTreeOpenedFile guifg='#b8bb26' gui='bold' 
+  " hi NvimTreeIndentMarker guifg='#fbf1c7'
+  " hi NvimTreeWinSeparator guibg='#282828' guifg='#3c3836'
+  " hi NvimTreeFolderIcon guifg=#ffffff
   hi TelescopeNormal guibg='#282828' guifg='#ffffff'
-  hi TelescopeBorder guibg='#282828' guifg='#875faf'
-  hi NvimTreeIndentMarker guifg='#3a3a3a'
-  hi NvimTreeWinSeparator guibg='#282828' guifg='#c2a5f3'
-  hi NvimTreeFolderIcon guifg=#3de5a7
+  hi TelescopeBorder guibg='#282828' guifg='#3c3836'
   hi MarkSignHL guifg=#ffffff guibg=#3c3836
+  hi ErrorMsg guifg=Red guibg=NONE
 ]])

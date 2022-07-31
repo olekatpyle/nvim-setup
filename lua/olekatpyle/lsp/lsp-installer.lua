@@ -7,10 +7,9 @@ local servers = {
 	"sumneko_lua",
 	"pyright",
 	"clangd",
-	--"omnisharp",
 	"csharp_ls",
-	-- "rome",
 	"tsserver",
+	"cssls",
 }
 
 local settings = {
@@ -64,6 +63,11 @@ for _, server in pairs(servers) do
 	if server == "pyright" then
 		local pyright_opts = require("olekatpyle.lsp.settings.pyright")
 		opts = vim.tbl_deep_extend("force", pyright_opts, opts)
+	end
+
+	if server == "tsserver" then
+		local tsserver_opts = require("olekatpyle.lsp.settings.tsserver")
+		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
 	end
 
 	lspconfig[server].setup(opts)

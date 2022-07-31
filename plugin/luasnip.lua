@@ -42,7 +42,6 @@ local rep = require("luasnip.extras").rep
 local c = ls.choice_node
 local f = ls.function_node
 
--- all
 ls.add_snippets("all", {
 	s(
 		"todo",
@@ -61,12 +60,10 @@ ls.add_snippets("all", {
 	),
 })
 
--- lua
 ls.add_snippets("lua", {
 	s("req", fmt("local {} = require('{}')", { i(1, "var"), i(2, "plugin") })),
 })
 
--- html
 ls.add_snippets("html", {
 	s(
 		"!",
@@ -77,8 +74,10 @@ ls.add_snippets("html", {
 	),
 	s(".div", fmt('<div class="{}">{}</div>', { i(1), i(2) })),
 	s("#div", fmt('<div id="{}">{}</div>', { i(1), i(2) })),
+	s("div", fmt("<div>{}</div>", { i(1) })),
 	s(".ul", fmt('<ul class="{}">\n  <li>{}</li>\n</ul>', { i(1), i(2) })),
 	s("#ul", fmt('<ul id="{}">\n  <li>{}</li>\n</ul>', { i(1), i(2) })),
+	s("ul", fmt("<ul>\n  <li>{}</li>\n</ul>", { i(1) })),
 	s("a", fmt([[<a href="{}">{}</a>]], { i(1), i(2) })),
 	s("scr", fmt([[<script src="{}">{}</script>]], { i(1), i(2) })),
 	s("link", fmt([[<link rel="{}" href="{}">]], { i(1), i(2) })),
@@ -86,3 +85,10 @@ ls.add_snippets("html", {
 	s("h", fmt("<h{}>{}</{}>", { i(1), i(2), rep(1) })),
 	s("p", fmt("<p>{}</p>", { i(1) })),
 })
+
+ls.filetype_extend("javascript", { "html" })
+ls.filetype_extend("typescript", { "html" })
+ls.filetype_extend("jsx", { "html" })
+ls.filetype_extend("tsx", { "html" })
+ls.filetype_extend("typescript", { "javascript" })
+ls.filetype_extend("tsx", { "jsx" })
