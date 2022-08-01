@@ -52,7 +52,7 @@ return require("packer").startup(function()
 		},
 	})
 
-	use("ryanoasis/vim-devicons")
+	-- use("ryanoasis/vim-devicons")
 
 	use({
 		"olekatpyle/lualine.nvim",
@@ -91,7 +91,7 @@ return require("packer").startup(function()
 	use("ThePrimeagen/harpoon")
 	use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
 	use("jbyuki/venn.nvim")
-	use("chentoast/marks.nvim")
+	-- use("chentoast/marks.nvim")
 
 	------
 	-- LSP
@@ -101,13 +101,12 @@ return require("packer").startup(function()
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
-	use("hrsh7th/cmp-emoji")
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
 	use("williamboman/nvim-lsp-installer")
 	use("L3MON4D3/LuaSnip")
 	use("rafamadriz/friendly-snippets")
-	-- use("saadparwaiz1/cmp_luasnip")
+	use("saadparwaiz1/cmp_luasnip")
 	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
 	use("olekatpyle/lspsaga.nvim")

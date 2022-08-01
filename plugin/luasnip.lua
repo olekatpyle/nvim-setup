@@ -72,18 +72,31 @@ ls.add_snippets("html", {
 			{ i(1, "Document") }
 		)
 	),
-	s(".div", fmt('<div class="{}">{}</div>', { i(1), i(2) })),
+	s(".div", fmt('<div className="{}">{}</div>', { i(1), i(2) })),
 	s("#div", fmt('<div id="{}">{}</div>', { i(1), i(2) })),
 	s("div", fmt("<div>{}</div>", { i(1) })),
-	s(".ul", fmt('<ul class="{}">\n  <li>{}</li>\n</ul>', { i(1), i(2) })),
+	s(".ul", fmt('<ul className="{}">\n  <li>{}</li>\n</ul>', { i(1), i(2) })),
 	s("#ul", fmt('<ul id="{}">\n  <li>{}</li>\n</ul>', { i(1), i(2) })),
 	s("ul", fmt("<ul>\n  <li>{}</li>\n</ul>", { i(1) })),
+	s(".ol", fmt('<ol className="{}">\n  <li>{}</li>\n</ol>', { i(1), i(2) })),
+	s("#ol", fmt('<ol className="{}">\n  <li>{}</li>\n</ol>', { i(1), i(2) })),
+	s("ol", fmt("<ol>\n  <li>{}</li>\n</ol>", { i(1) })),
+	s("li", fmt("<li>{}</li>", { i(1) })),
 	s("a", fmt([[<a href="{}">{}</a>]], { i(1), i(2) })),
 	s("scr", fmt([[<script src="{}">{}</script>]], { i(1), i(2) })),
 	s("link", fmt([[<link rel="{}" href="{}">]], { i(1), i(2) })),
 	s("img", fmt([[<img {}>]], { i(1) })),
 	s("h", fmt("<h{}>{}</{}>", { i(1), i(2), rep(1) })),
 	s("p", fmt("<p>{}</p>", { i(1) })),
+	s("but", fmt("<button onClick={}>{}</button>", { i(1), i(2) })),
+	s("form", fmt("<form onSubmit={}>{}</form>", { i(1), i(2) })),
+	s("inp", fmt("<input {}/>", { i(1) })),
+	s("sel", fmt("<select>\n  <option value={}>{}</option>\n</select>", { i(1), i(2) })),
+	s("lab", fmt("<label>{}</label>", { i(1) })),
+})
+
+ls.add_snippets("javascript", {
+	s("<", fmt("<{} {}/>", { i(1), i(2) })),
 })
 
 ls.filetype_extend("javascript", { "html" })
