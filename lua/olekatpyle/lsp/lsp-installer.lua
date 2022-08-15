@@ -7,9 +7,11 @@ local servers = {
 	"sumneko_lua",
 	"pyright",
 	"clangd",
+	-- "omnisharp",
 	"csharp_ls",
 	"tsserver",
 	"cssls",
+	"tailwindcss",
 }
 
 local settings = {
@@ -17,9 +19,6 @@ local settings = {
 	-- automatic_installation = false,
 	ui = {
 		icons = {
-			-- server_installed = "◍",
-			-- server_pending = "◍",
-			-- server_uninstalled = "◍",
 			server_installed = "✓",
 			server_pending = "➜",
 			server_uninstalled = "✗",
@@ -68,6 +67,11 @@ for _, server in pairs(servers) do
 	if server == "tsserver" then
 		local tsserver_opts = require("olekatpyle.lsp.settings.tsserver")
 		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+	end
+
+	if server == "csharp_ls" then
+		local sharp_opts = require("olekatpyle.lsp.settings.csharp_ls")
+		opts = vim.tbl_deep_extend("force", sharp_opts, opts)
 	end
 
 	lspconfig[server].setup(opts)

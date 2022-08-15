@@ -87,12 +87,22 @@ ls.add_snippets("html", {
 	s("link", fmt([[<link rel="{}" href="{}">]], { i(1), i(2) })),
 	s("img", fmt([[<img {}>]], { i(1) })),
 	s("h", fmt("<h{}>{}</{}>", { i(1), i(2), rep(1) })),
+	s(".h", fmt("<h{} className={}>{}</{}>", { i(1), i(2), i(3), rep(1) })),
+	s("#h", fmt("<h{} id={}>{}</{}>", { i(1), i(2), i(3), rep(1) })),
 	s("p", fmt("<p>{}</p>", { i(1) })),
+	s(".p", fmt("<p className={}>{}</p>", { i(1), i(2) })),
+	s("#p", fmt("<p id={}>{}</p>", { i(1), i(2) })),
 	s("but", fmt("<button onClick={}>{}</button>", { i(1), i(2) })),
 	s("form", fmt("<form onSubmit={}>{}</form>", { i(1), i(2) })),
 	s("inp", fmt("<input {}/>", { i(1) })),
 	s("sel", fmt("<select>\n  <option value={}>{}</option>\n</select>", { i(1), i(2) })),
 	s("lab", fmt("<label>{}</label>", { i(1) })),
+	s(".lab", fmt("<label className={}>{}</label>", { i(1), i(2) })),
+	s("#lab", fmt("<label id={}>{}</label>", { i(1), i(2) })),
+	s("span", fmt("<span>{}</span>", { i(1) })),
+	s(".span", fmt("<span className={}>{}</span>", { i(1), i(2) })),
+	s("#span", fmt("<span id={}>{}</span>", { i(1), i(2) })),
+	s("pic", fmt([[<picture><source media="" srcset=""/><img src=""/></picture>]], {})),
 })
 
 ls.add_snippets("javascript", {
@@ -103,5 +113,6 @@ ls.filetype_extend("javascript", { "html" })
 ls.filetype_extend("typescript", { "html" })
 ls.filetype_extend("jsx", { "html" })
 ls.filetype_extend("tsx", { "html" })
+ls.filetype_extend("typescriptreact", { "html" })
 ls.filetype_extend("typescript", { "javascript" })
-ls.filetype_extend("tsx", { "jsx" })
+ls.filetype_extend("typescriptreact", { "javascriptreact" })

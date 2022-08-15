@@ -18,7 +18,7 @@ require("nvim-tree").setup({
 	update_cwd = false,
 	reload_on_bufenter = false,
 	view = {
-		adaptive_size = false,
+		adaptive_size = true,
 		centralize_selection = false,
 		width = 30,
 		height = 30,
@@ -36,7 +36,7 @@ require("nvim-tree").setup({
 	renderer = {
 		add_trailing = false,
 		group_empty = false,
-		highlight_git = false,
+		highlight_git = true,
 		full_name = false,
 		highlight_opened_files = "none",
 		root_folder_modifier = ":~",
@@ -101,7 +101,7 @@ require("nvim-tree").setup({
 	},
 	diagnostics = {
 		enable = true,
-		show_on_dirs = false,
+		show_on_dirs = true,
 		icons = {
 			hint = " ",
 			info = " ",

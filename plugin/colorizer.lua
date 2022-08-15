@@ -1,9 +1,12 @@
-require 'colorizer'.setup {
-    'css',
-    'javascript',
-    'lua',
-    'python',
-    html = {
-        mode = 'foreground',
-    }
-}
+require("colorizer").setup({
+	"css",
+	"javascript",
+	"typescript",
+	"javascriptreact",
+	"typescriptreact",
+	"lua",
+	"python",
+	html = {
+		mode = "foreground",
+	},
+})

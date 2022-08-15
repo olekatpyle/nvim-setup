@@ -12,9 +12,9 @@ vim.g.mapleader = " "
 
 -- save and quit
 map("n", "<Leader>w", ":w<CR>", { silent = true, noremap = true })
-map("n", "<Leader>q", ":q<CR>", { silent = true, noremap = true })
+map("n", "<Leader>qq", ":q<CR>", { silent = true, noremap = true })
 map("n", "<Leader>Q", ":q!<CR>", { silent = true, noremap = true })
-map("n", "<Leader>bd", ":bd<CR>", { silent = true, noremap = true })
+map("n", "<Leader>q", ":bd<CR>", { silent = true, noremap = true })
 
 -- basic window movement
 map("n", "<C-h>", "<C-w>h", { silent = true })
@@ -28,7 +28,6 @@ map("v", ">", ">gv", { noremap = true, silent = true })
 
 -- <ESC> alternative
 map("i", "jk", "<ESC>", { noremap = true, silent = true })
-map("i", "jj", "<ESC>", { noremap = true, silent = true })
 map("i", "kj", "<ESC>", { noremap = true, silent = true })
 map("i", "KJ", "<ESC>", { noremap = true, silent = true })
 map("i", "JK", "<ESC>", { noremap = true, silent = true })
