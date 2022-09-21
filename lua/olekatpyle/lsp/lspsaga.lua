@@ -18,6 +18,12 @@ lspsaga.init_lsp_saga({
 		sign_priority = 40,
 		virtual_text = false,
 	},
+	-- code_action_lightbulb = {
+	-- 	enable = true,
+	-- 	sign = true,
+	-- 	sign_priority = 40,
+	-- 	virtual_text = true,
+	-- },
 	finder_definition_icon = "﯎ ",
 	finder_reference_icon = " ",
 	max_preview_lines = 10,
@@ -38,7 +44,11 @@ lspsaga.init_lsp_saga({
 		exec = "<CR>",
 	},
 	definition_preview_icon = " ",
-	border_style = "no-border", -- "single" "double" "round" "plus" "no-border"
+	border_style = "single", -- "single" "double" "round" "plus" "no-border"
+	-- symbol_in_winbar = true,
+	-- winbar_seperator = ">",
+	-- winbar_show_file = true,
+	winbar_file_format = nil,
 	rename_prompt_prefix = "➤",
 	rename_output_qflist = {
 		enable = false,

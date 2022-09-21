@@ -1,6 +1,7 @@
+local sign = ""
 require("marks").setup({
 	-- whether to map keybinds or not. default true
-	default_mappings = true,
+	default_mappings = false,
 	-- which builtin marks to show. default {}
 	-- builtin_marks = { ".", "<", ">", "^" },
 	-- whether movements cycle back to the beginning/end of buffer. default true
@@ -24,11 +25,69 @@ require("marks").setup({
 	-- across multiple buffers. default sign is '!@#$%^&*()' (from 0 to 9), and
 	-- default virt_text is "".
 	bookmark_0 = {
-		sign = "",
-		-- virt_text = "hello world",
-		-- explicitly prompt for a virtual line annotation when setting a bookmark from this group.
-		-- defaults to false.
-		annotate = false,
+		sign = sign,
+		virt_text = "",
+		annotate = true,
 	},
-	mappings = {},
+	bookmark_1 = {
+		sign = sign,
+		virt_text = "",
+		annotate = true,
+	},
+	bookmark_2 = {
+		sign = sign,
+		virt_text = "",
+		annotate = true,
+	},
+	bookmark_3 = {
+		sign = sign,
+		virt_text = "",
+		annotate = true,
+	},
+	bookmark_4 = {
+		sign = sign,
+		virt_text = "",
+		annotate = true,
+	},
+	bookmark_5 = {
+		sign = sign,
+		virt_text = "",
+		annotate = true,
+	},
+	bookmark_6 = {
+		sign = sign,
+		virt_text = "",
+		annotate = true,
+	},
+	bookmark_7 = {
+		sign = sign,
+		virt_text = "",
+		annotate = true,
+	},
+	bookmark_8 = {
+		sign = sign,
+		virt_text = "",
+		annotate = true,
+	},
+	bookmark_9 = {
+		sign = sign,
+		virt_text = "",
+		annotate = true,
+	},
+	mappings = {
+		next = "m,",
+		prev = "m.",
+		delete_buf = "dm.",
+		delete_bookmark = "dm1",
+		set_bookmark0 = "m0",
+		set_bookmark1 = "m1",
+		set_bookmark2 = "m2",
+		set_bookmark3 = "m3",
+		set_bookmark4 = "m4",
+		set_bookmark5 = "m5",
+		set_bookmark6 = "m6",
+		set_bookmark7 = "m7",
+		set_bookmark8 = "m8",
+		set_bookmark9 = "m9",
+	},
 })

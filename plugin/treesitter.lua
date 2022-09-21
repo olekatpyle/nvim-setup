@@ -18,6 +18,7 @@ require("nvim-treesitter.configs").setup({
 		"lua",
 		"bash",
 		"comment",
+		"astro",
 	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)

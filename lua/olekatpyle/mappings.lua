@@ -15,6 +15,7 @@ map("n", "<Leader>w", ":w<CR>", { silent = true, noremap = true })
 map("n", "<Leader>qq", ":q<CR>", { silent = true, noremap = true })
 map("n", "<Leader>Q", ":q!<CR>", { silent = true, noremap = true })
 map("n", "<Leader>q", ":bd<CR>", { silent = true, noremap = true })
+map("n", "<Leader>s", "<cmd>so%<CR>", { silent = true, noremap = true })
 
 -- basic window movement
 map("n", "<C-h>", "<C-w>h", { silent = true })
@@ -37,14 +38,15 @@ map("n", "<TAB>", ":bnext<CR>", { noremap = true, silent = true })
 map("n", "<S-TAB>", ":bprevious<CR>", { noremap = true, silent = true })
 
 -- Move selected line / block of text in visual mode
-map("x", "K", ":move '<-2<CR>gv-gv'", { noremap = true, silent = true })
-map("x", "J", ":move '>+1<CR>gv-gv'", { noremap = true, silent = true })
+-- map("x", "K", ":move '<-2<CR>gv-gv'", { noremap = true, silent = true })
+-- map("x", "J", ":move '>+1<CR>gv-gv'", { noremap = true, silent = true })
 
 ----------
 -- PLUGINS
 
 -- NvimTree explorer
 map("n", "<Leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+map("n", "<Leader>gg", ":LazyGit<CR>", { noremap = true, silent = true })
 
 -- Undotree
 map("n", "<Leader>u", ":UndotreeToggle<CR>", { noremap = true })
@@ -57,7 +59,7 @@ wk.register({
 	p = {
 		name = "Telescope",
 		s = {
-			':lua require("telescope.builtin").grep_string {search = vim.fn.input("  for: ")}<CR>',
+			':lua require("telescope.builtin").grep_string({prompt_title = "Find string", grep_open_files = true})<CR>',
 			"Grep String",
 		},
 		f = { ':lua require("telescope.builtin").find_files()<CR>', "Search file" },
@@ -66,6 +68,10 @@ wk.register({
 		q = { ':lua require("olekatpyle.telescope").search_qtile()<CR>', "Search Qtile dir" },
 		d = { ':lua require("olekatpyle.telescope").search_devops()<CR>', "Search DevOps dir" },
 		c = { ':lua require("olekatpyle.telescope").search_config()<CR>', "Search .config dir" },
+		w = { ':lua require("olekatpyle.telescope").search_www()<CR>', "Search www dir" },
+		b = { ':lua require("telescope").extensions.bookmarks.bookmarks(opts)<CR>', "Search Firefox bookmarks" },
+		e = { ':lua require("telescope").extensions.file_browser.file_browser(opts)<CR>', "File Browser" },
+		h = { ':lua require("telescope.builtin").help_tags()<CR>', "Help tags" },
 	},
 }, { mode = "n", prefix = "<Leader>", buffer = nil, silent = true, nowait = false })
 
@@ -130,14 +136,28 @@ wk.register({
 	d = {
 		name = "Debug",
 		b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
+		B = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Condition: '))<CR>", "Conditional breakpoint" },
 		c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-		i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
-		o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
-		O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
-		r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
-		l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
+		i = { "<cmd>lua require'dap'.step_into()<cr>", "Step into" },
+		o = { "<cmd>lua require'dap'.step_over()<cr>", "Step over" },
+		O = { "<cmd>lua require'dap'.step_out()<cr>", "Step out" },
+		r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
+		l = { "<cmd>lua require'dap'.run_last()<cr>", "Run last" },
 		u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
 		x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+	},
+}, { mode = "n", prefix = "<Leader>" })
+
+-- Xunit
+wk.register({
+	x = {
+		name = "Xunit",
+		l = { ":XToggleTests<CR>", "Open tests view" },
+		n = { ":XNextTest<CR>", "Jump next test" },
+		p = { ":XPrevTest<CR>", "Jump prev test" },
+		x = { ":XRunTest<CR>", "Run selected test" },
+		k = { ":XToggleLog<CR>", "Show test results" },
+		a = { ":XRunAll<CR>", "Run all tests in buffer" },
 	},
 }, { mode = "n", prefix = "<Leader>" })
 

@@ -32,8 +32,6 @@ vim.keymap.set("i", "<c-l>", function()
 	end
 end)
 
-vim.keymap.set("n", "<Leader>s", "<cmd>source ~/.config/nvim/plugin/luasnip.lua<CR>")
-
 local s = ls.snippet
 local fmt = require("luasnip.extras.fmt").fmt
 local i = ls.insert_node
@@ -114,5 +112,6 @@ ls.filetype_extend("typescript", { "html" })
 ls.filetype_extend("jsx", { "html" })
 ls.filetype_extend("tsx", { "html" })
 ls.filetype_extend("typescriptreact", { "html" })
+ls.filetype_extend("astro", { "html" })
 ls.filetype_extend("typescript", { "javascript" })
 ls.filetype_extend("typescriptreact", { "javascriptreact" })

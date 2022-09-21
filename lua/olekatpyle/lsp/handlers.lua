@@ -1,4 +1,5 @@
 local M = {}
+local navic = require("nvim-navic")
 
 M.setup = function()
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -33,6 +34,7 @@ M.on_attach = function(client, bufnr, attach_opts)
 	require("olekatpyle.mappings").lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 	lsp_signature_help(bufnr)
+	navic.attach(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

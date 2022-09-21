@@ -6,5 +6,6 @@ return {
 			checkJs = "false",
 		},
 		exclude = { "node_modules" },
+		filetypes = { "*.tsx", "*.ts", "*.jsx", "*.js", "*.astro" },
 	},
 }

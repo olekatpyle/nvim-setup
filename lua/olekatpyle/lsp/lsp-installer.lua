@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 local servers = {
+	"astro",
 	"sumneko_lua",
 	"pyright",
 	"clangd",
@@ -70,8 +71,13 @@ for _, server in pairs(servers) do
 	end
 
 	if server == "csharp_ls" then
-		local sharp_opts = require("olekatpyle.lsp.settings.csharp_ls")
+		local sharp_opts = require("olekatpyle.lsp.settings.omnisharp")
 		opts = vim.tbl_deep_extend("force", sharp_opts, opts)
+	end
+
+	if server == "astro" then
+		local astro_opts = require("olekatpyle.lsp.settings.astro")
+		opts = vim.tbl_deep_extend("force", astro_opts, opts)
 	end
 
 	lspconfig[server].setup(opts)

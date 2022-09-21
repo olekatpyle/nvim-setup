@@ -30,10 +30,10 @@ local options = {
 	number = true, -- set numbered lines
 	relativenumber = true, -- set relative numbered lines
 	numberwidth = 2, -- set number column width to 2 (default 4)
-	signcolumn = "yes:3", -- always show the sign column, widht=3
+	signcolumn = "yes:4", -- always show the sign column, widht=3
 	colorcolumn = "80",
 	wrap = false, -- toggle word wrap
-	scrolloff = 8,
+	scrolloff = 999,
 }
 
 vim.opt.shortmess:append("c")
@@ -41,11 +41,23 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.cmd([[ 
+vim.cmd([[
   set undodir=$HOME/.config/nvim/undodir/               " set a path to a undo directory where the undo files will be placed
 
   set wildignore+=*.pyc
   set wildignore+=*.git
   set wildignore+=**/node_modules/*
   set whichwrap+=<,>,[,],h,l
+  set laststatus=3
+  set termguicolors
+  set background=dark
+  set guifont=Fira\ Code:h10.5
+
+  colorscheme onedark 
+  if exists(g:neovide)
+    let g:neovide_refresh_rate = 60
+    let g:neovide_refresh_rate_idle = 5
+    let g:neovide_transparency = 0.9
+    let g:neovide_cursor_vfx_mode = "pixiedust"
+  endif
 ]])

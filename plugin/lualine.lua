@@ -1,10 +1,16 @@
+local navic = require("nvim-navic")
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = "gruvbox_dark",
-		-- theme = "neo_violet",
-		-- component_separators = { left = '', right = ''},
-		-- section_separators = { left = '', right = ''},
+		-- theme = "gruvbox_dark",
+		theme = "neo_violet",
+		-- theme = "onedark",
+		-- theme = "tokyonight",
+		-- theme = "ayu_mirage",
+		-- theme = "codedark",
+		-- component_separators = { left = "", right = "" },
+		-- section_separators = { left = "", right = "" },
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = {},
@@ -31,12 +37,12 @@ require("lualine").setup({
 			},
 			{
 				"diagnostics",
-				-- diagnostics_color = {
-				--     error = {guibg='#875faf', guifg='#ce537a'},
-				--     warn = {guibg='#875faf', guifg='#f0f571'},
-				--     info = {guibg='#875faf', guifg='#cacfd2'},
-				--     hint = {guibg='#875faf', guifg='#009966'},
-				-- }
+				diagnostics_color = {
+					error = { guibg = "#875faf", guifg = "#ce537a" },
+					warn = { guibg = "#875faf", guifg = "#f0f571" },
+					info = { guibg = "#875faf", guifg = "#cacfd2" },
+					hint = { guibg = "#875faf", guifg = "#009966" },
+				},
 			},
 		},
 		lualine_c = {
@@ -48,6 +54,7 @@ require("lualine").setup({
 				"filename",
 			},
 			"filename",
+			{ navic.get_location, cond = navic.is_available },
 		},
 		lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_y = { "progress" },
@@ -72,7 +79,7 @@ require("lualine").setup({
 	extensions = { "nvim-tree", "toggleterm", "fzf", "fugitive" },
 })
 
-vim.cmd([[ 
+vim.cmd([[
     hi lualine_a_normal gui=italic
     hi lualine_a_insert gui=italic
     hi lualine_a_visual gui=italic

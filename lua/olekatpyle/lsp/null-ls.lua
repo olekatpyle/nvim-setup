@@ -11,7 +11,9 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	debug = false,
 	sources = {
-		formatting.prettierd,
+		formatting.prettierd.with({
+			filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "astro" },
+		}),
 		-- formatting.stylelint,
 		formatting.rustfmt,
 		formatting.stylua,
@@ -19,7 +21,7 @@ null_ls.setup({
 		formatting.black.with({ extra_args = { "--fast" } }),
 		-- formatting.clang_format.with({ filetype = { "c", "cpp" } }),
 		formatting.cmake_format.with({ filetypes = { "Makefile", "MAKEFILE", "makefile", "make" } }),
-		formatting.trim_whitespace.with({ args = { '{sub(/[ \t ]+$/, ""); print}' } }),
+		-- formatting.trim_whitespace.with({ args = { '{sub(/[ \t ]+$/, ""); print}' } }),
 		formatting.prismaFmt,
 		diagnostics.flake8,
 		diagnostics.checkmake.with({ filetypes = { "Makefile", "MAKEFILE", "makefile", "make" } }),

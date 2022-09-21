@@ -51,6 +51,7 @@ return require("packer").startup(function()
 			{ "nvim-telescope/telescope-fzy-native.nvim" },
 		},
 	})
+	use("nvim-telescope/telescope-file-browser.nvim")
 
 	-- use("ryanoasis/vim-devicons")
 
@@ -84,14 +85,34 @@ return require("packer").startup(function()
 	})
 
 	use("Yggdroot/indentLine")
+	use("lukas-reineke/indent-blankline.nvim")
 	use("jiangmiao/auto-pairs")
-	use("tpope/vim-fugitive")
+	-- use("tpope/vim-fugitive")
 	use("tpope/vim-commentary")
 	use("folke/which-key.nvim")
 	use("ThePrimeagen/harpoon")
 	use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
 	use("jbyuki/venn.nvim")
-	-- use("chentoast/marks.nvim")
+	use("chentoast/marks.nvim")
+	use("kdheepak/lazygit.nvim")
+	use("fgheng/winbar.nvim")
+	use({
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
+	})
+	use({
+		"dhruvmanila/telescope-bookmarks.nvim",
+		tag = "*",
+		requires = "kkharji/sqlite.lua",
+	})
+	-- use("glepnir/dashboard-nvim")
+
+	use("nvim-treesitter/playground")
+
+	------
+	-- csharp
+	------
+	use("olekatpyle/xunit.nvim")
 
 	------
 	-- LSP
@@ -114,6 +135,8 @@ return require("packer").startup(function()
 
 	use("mfussenegger/nvim-dap")
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use("theHamsta/nvim-dap-virtual-text")
+	use("nvim-telescope/telescope-dap.nvim")
 
 	use("mfussenegger/nvim-jdtls")
 	use("RRethy/vim-illuminate")
@@ -125,6 +148,9 @@ return require("packer").startup(function()
 
 	-- Themes
 	use("morhetz/gruvbox")
+	use("navarasu/onedark.nvim")
+	-- use("folke/tokyonight.nvim")
+	-- use("Shatur/neovim-ayu")
 
 	if packer_bootstrap then
 		require("packer").sync()
