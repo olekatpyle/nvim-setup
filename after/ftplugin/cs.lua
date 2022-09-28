@@ -22,4 +22,5 @@ require("xunit").setup({
 	},
 	-- set border for popup and test log window
 	border = { "┌", "─", "┐", "└", "┘", "│" },
+	notify = true,
 })

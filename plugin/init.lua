@@ -37,9 +37,12 @@ return require("packer").startup(function()
 	-- UI
 	-----
 	use({
-		"kyazdani42/nvim-tree.lua",
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
 		requires = {
-			"kyazdani42/nvim-web-devicons",
+			"nvim-lua/plenary.nvim",
+			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
 		},
 	})
 
@@ -51,9 +54,11 @@ return require("packer").startup(function()
 			{ "nvim-telescope/telescope-fzy-native.nvim" },
 		},
 	})
-	use("nvim-telescope/telescope-file-browser.nvim")
-
-	-- use("ryanoasis/vim-devicons")
+	use({
+		"dhruvmanila/telescope-bookmarks.nvim",
+		tag = "*",
+		requires = "kkharji/sqlite.lua",
+	})
 
 	use({
 		"olekatpyle/lualine.nvim",
@@ -72,8 +77,6 @@ return require("packer").startup(function()
 
 	use("norcalli/nvim-colorizer.lua")
 
-	use("lewis6991/gitsigns.nvim")
-
 	----------
 	-- Utility
 	----------
@@ -83,11 +86,11 @@ return require("packer").startup(function()
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
+	use("nvim-treesitter/playground")
 
 	use("Yggdroot/indentLine")
 	use("lukas-reineke/indent-blankline.nvim")
 	use("jiangmiao/auto-pairs")
-	-- use("tpope/vim-fugitive")
 	use("tpope/vim-commentary")
 	use("folke/which-key.nvim")
 	use("ThePrimeagen/harpoon")
@@ -95,28 +98,22 @@ return require("packer").startup(function()
 	use("jbyuki/venn.nvim")
 	use("chentoast/marks.nvim")
 	use("kdheepak/lazygit.nvim")
-	use("fgheng/winbar.nvim")
 	use({
 		"SmiteshP/nvim-navic",
 		requires = "neovim/nvim-lspconfig",
 	})
-	use({
-		"dhruvmanila/telescope-bookmarks.nvim",
-		tag = "*",
-		requires = "kkharji/sqlite.lua",
-	})
 	-- use("glepnir/dashboard-nvim")
+	use("rcarriga/nvim-notify")
 
-	use("nvim-treesitter/playground")
-
-	------
-	-- csharp
-	------
 	use("olekatpyle/xunit.nvim")
 
+	use("lewis6991/gitsigns.nvim")
+	use("sindrets/diffview.nvim")
 	------
 	-- LSP
 	------
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
 	use("hrsh7th/nvim-cmp") -- Autocompletion plugin
 	use("hrsh7th/cmp-buffer")
@@ -124,12 +121,18 @@ return require("packer").startup(function()
 	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
-	use("williamboman/nvim-lsp-installer")
+	-- use("williamboman/nvim-lsp-installer")
 	use("L3MON4D3/LuaSnip")
 	use("rafamadriz/friendly-snippets")
 	use("saadparwaiz1/cmp_luasnip")
 	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
+	use({
+		"stevearc/aerial.nvim",
+		config = function()
+			require("aerial").setup()
+		end,
+	})
 	use("olekatpyle/lspsaga.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
 
@@ -141,10 +144,6 @@ return require("packer").startup(function()
 	use("mfussenegger/nvim-jdtls")
 	use("RRethy/vim-illuminate")
 	use("ray-x/lsp_signature.nvim")
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-	})
 
 	-- Themes
 	use("morhetz/gruvbox")

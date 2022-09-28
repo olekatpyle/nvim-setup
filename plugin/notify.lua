@@ -1,0 +1,21 @@
+require("notify").setup({
+	level = vim.log.levels.INFO,
+	timeout = 3000,
+	max_width = nil,
+	max_height = nil,
+	stages = "fade",
+	render = "default",
+	background_colour = "Normal",
+	on_open = nil,
+	on_close = nil,
+	minimum_width = 50,
+	fps = 30,
+	top_down = true,
+	icons = {
+		ERROR = "",
+		WARN = "",
+		INFO = "",
+		DEBUG = "",
+		TRACE = "✎",
+	},
+})

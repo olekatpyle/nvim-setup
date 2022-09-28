@@ -41,7 +41,7 @@ local kind_icons = {
 	Value = "  ",
 	Enum = "  ",
 	Keyword = "  ",
-	Snippet = "﬌  ",
+	Snippet = "  ",
 	Color = "  ",
 	File = "  ",
 	Reference = " ",
@@ -87,6 +87,8 @@ cmp.setup({
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
 			else
 				fallback()
 			end
@@ -106,12 +108,11 @@ cmp.setup({
 			end
 			-- NOTE: order matters
 			vim_item.menu = ({
-				nvim_lsp = "[LSP]",
-				nvim_lua = "[Nvim]",
-				luasnip = "[Snippet]",
-				buffer = "[Buffer]",
-				path = "[Path]",
-				emoji = "[Emoji]",
+				nvim_lsp = "(Lsp)",
+				nvim_lua = "(Nvim)",
+				luasnip = "(LuaSnip)",
+				buffer = "(Buffer)",
+				path = "(Path)",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -130,17 +131,16 @@ cmp.setup({
 			},
 		},
 		{ name = "path" },
-		{ name = "emoji" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
 	},
-	completion = { border = { " ", " ", " ", " ", " ", " ", " ", " " }, scrollbar = " " },
 	window = {
+		completion = cmp.config.window.bordered(),
 		documentation = true,
-		-- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-		border = { " ", " ", " ", " ", " ", " ", " ", " " },
+		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+		-- border = { " ", " ", " ", " ", " ", " ", " ", " " },
 		scrollbar = " ",
 	},
 	view = {

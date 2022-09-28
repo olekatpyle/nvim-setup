@@ -1,3 +1,4 @@
 require("olekatpyle.options")
 require("olekatpyle.mappings")
-require("olekatpyle.lsp")
+
+vim.notify = require("notify")

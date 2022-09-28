@@ -20,7 +20,4 @@ require("tabline").setup({
 vim.cmd([[
     set guioptions-=e " Use showtabline in gui vim
     set sessionoptions+=tabpages,globals " store tabpages and globals in session
-    " hi tabline_a_normal guibg='#875faf' guifg='#ffffff'
-    " hi tabline_b_normal guibg='#d75fff' guifg='#282828'
-    " hi tabline_c_normal guibg='#d75fff' guifg='#282828'
 ]])

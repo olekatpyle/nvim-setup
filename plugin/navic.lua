@@ -34,3 +34,4 @@ navic.setup({
 	depth_limit = 0,
 	depth_limit_indicator = "..",
 })
+vim.g.navic_silence = true

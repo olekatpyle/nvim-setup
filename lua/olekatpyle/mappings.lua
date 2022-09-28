@@ -1,4 +1,3 @@
-local M = {}
 local wk = require("which-key")
 
 -- wrapper function
@@ -44,9 +43,18 @@ map("n", "<S-TAB>", ":bprevious<CR>", { noremap = true, silent = true })
 ----------
 -- PLUGINS
 
--- NvimTree explorer
-map("n", "<Leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+-- NeoTree explorer
+map("n", "<Leader>e", ":Neotree toggle<CR>", { noremap = true, silent = true })
+
+-- LazyGit
 map("n", "<Leader>gg", ":LazyGit<CR>", { noremap = true, silent = true })
+wk.register({
+	g = {
+		name = "Git",
+		o = { ":DiffviewOpen<CR>", "Open Diffview" },
+		k = { ":DiffviewClose<CR>", "Close Diffview" },
+	},
+}, { mode = "n", prefix = "<Leader>", buffer = nil, silent = true, nowait = false })
 
 -- Undotree
 map("n", "<Leader>u", ":UndotreeToggle<CR>", { noremap = true })
@@ -55,6 +63,46 @@ map("n", "<Leader>u", ":UndotreeToggle<CR>", { noremap = true })
 map("n", "<Leader>t", ':lua NTGlobal["terminal"]:toggle()<CR>', { noremap = true, silent = true })
 
 -- Telescope
+
+local function search_nvim()
+	require("telescope.builtin").find_files({
+		prompt_title = "< .config/nvim >",
+		cwd = vim.env.NVIM_DIR,
+		hidden = true,
+	})
+end
+
+local function search_qtile()
+	require("telescope.builtin").find_files({
+		prompt_title = "< Qtile >",
+		cwd = vim.env.QT_DIR,
+		hidden = true,
+	})
+end
+
+local function search_devops()
+	require("telescope.builtin").find_files({
+		prompt_title = "< DevOps >",
+		cwd = vim.env.DEVOPS_DIR,
+		hidden = true,
+	})
+end
+
+local function search_config()
+	require("telescope.builtin").find_files({
+		prompt_title = "< Config >",
+		cwd = vim.env.CONF_DIR,
+		hidden = true,
+	})
+end
+
+local function search_www()
+	require("telescope.builtin").find_files({
+		prompt_title = "< www >",
+		cwd = vim.env.WWW_DIR,
+		hidden = true,
+	})
+end
 wk.register({
 	p = {
 		name = "Telescope",
@@ -63,12 +111,11 @@ wk.register({
 			"Grep String",
 		},
 		f = { ':lua require("telescope.builtin").find_files()<CR>', "Search file" },
-		v = { ':lua require("olekatpyle.telescope").search_nvim()<CR>', "Search NVIM dir" },
-		g = { ':lua require("telescope.builtin").git_files()<CR>', "Git files" },
-		q = { ':lua require("olekatpyle.telescope").search_qtile()<CR>', "Search Qtile dir" },
-		d = { ':lua require("olekatpyle.telescope").search_devops()<CR>', "Search DevOps dir" },
-		c = { ':lua require("olekatpyle.telescope").search_config()<CR>', "Search .config dir" },
-		w = { ':lua require("olekatpyle.telescope").search_www()<CR>', "Search www dir" },
+		v = { search_nvim, "Search NVIM dir" },
+		q = { search_qtile, "Search Qtile dir" },
+		d = { search_devops, "Search DevOps dir" },
+		c = { search_config, "Search .config dir" },
+		w = { search_www, "Search www dir" },
 		b = { ':lua require("telescope").extensions.bookmarks.bookmarks(opts)<CR>', "Search Firefox bookmarks" },
 		e = { ':lua require("telescope").extensions.file_browser.file_browser(opts)<CR>', "File Browser" },
 		h = { ':lua require("telescope.builtin").help_tags()<CR>', "Help tags" },
@@ -160,37 +207,3 @@ wk.register({
 		a = { ":XRunAll<CR>", "Run all tests in buffer" },
 	},
 }, { mode = "n", prefix = "<Leader>" })
-
--- LSP keymaps
-function M.lsp_keymaps(bufnr)
-	wk.register({
-		g = {
-			name = "LSP",
-			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-			d = { "<cmd>Lspsaga preview_definition<CR>", "Preview definition" },
-			D = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Lookup definition in buffer" },
-			I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Lookup implementation" },
-			s = { "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", "Signature help" },
-			r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Lookup references" },
-			h = { "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", "LSP finder" },
-			l = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Line diagnostics" },
-			k = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", "Scroll up saga" },
-			j = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", "Scroll down saga" },
-			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-			--vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-		},
-	}, { buffer = bufnr })
-
-	wk.register({
-		["<Leader>"] = {
-			name = "LSP",
-			ca = { "<cmd>Lspsaga code_action<CR>", "Code actions" },
-			rn = { "<cmd>Lspsaga rename<CR>", "Rename" },
-		},
-	})
-	map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true, noremap = true })
-end
-
-return M
