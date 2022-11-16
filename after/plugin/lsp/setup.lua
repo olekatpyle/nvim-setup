@@ -43,10 +43,11 @@ end)
 require("mason-lspconfig").setup({
   ensure_installed = {
     "sumneko_lua",
-    "csharp_ls",
+    "omnisharp",
     "pyright",
     "rust_analyzer",
     "jdtls",
+    "tsserver",
   },
 })
 require("mason-lspconfig").setup_handlers({
@@ -83,8 +84,8 @@ require("mason-lspconfig").setup_handlers({
       },
     })
   end,
-  ["csharp_ls"] = function()
-    lspconfig.csharp_ls.setup({
+  ["omnisharp"] = function()
+    lspconfig.omnisharp.setup({
       filetypes = { "cs" },
       init_options = {
         AutomaticWorkspaceInit = true,
